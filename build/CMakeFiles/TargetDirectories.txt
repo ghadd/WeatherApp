@@ -1,0 +1,4 @@
+/home/ghadd/Development/CPP/WeatherApp/build/CMakeFiles/rebuild_cache.dir
+/home/ghadd/Development/CPP/WeatherApp/build/CMakeFiles/edit_cache.dir
+/home/ghadd/Development/CPP/WeatherApp/build/CMakeFiles/WeatherApp.dir
+/home/ghadd/Development/CPP/WeatherApp/build/CMakeFiles/WeatherApp_autogen.dir
