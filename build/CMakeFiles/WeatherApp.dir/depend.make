@@ -241,11 +241,14 @@ CMakeFiles/WeatherApp.dir/src/config.cpp.o: ../src/config.cpp
 CMakeFiles/WeatherApp.dir/src/config.cpp.o: ../src/config.h
 
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: ../src/config.h
+CMakeFiles/WeatherApp.dir/src/main.cpp.o: ../src/logic.h
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: ../src/place.h
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: ../src/weather.h
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: ../src/weatherinfo.h
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/QDate
+CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/QDir
+CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/QFile
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/QString
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/QTextStream
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/QtGlobal
@@ -268,6 +271,10 @@ CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/qcontiguouscach
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/qcoreevent.h
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/qdatetime.h
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/qdebug.h
+CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/qdir.h
+CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/qfile.h
+CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/qfiledevice.h
+CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/qfileinfo.h
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/qflags.h
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/qgenericatomic.h
 CMakeFiles/WeatherApp.dir/src/main.cpp.o: /usr/include/qt/QtCore/qglobal.h
@@ -358,6 +365,8 @@ CMakeFiles/WeatherApp.dir/src/weather.cpp.o: ../src/weather.cpp
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o: ../src/weather.h
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o: ../src/weatherinfo.h
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/QDate
+CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/QDir
+CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/QFile
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/QString
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/QTextStream
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/QtGlobal
@@ -380,6 +389,10 @@ CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/qcontiguousc
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/qcoreevent.h
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/qdatetime.h
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/qdebug.h
+CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/qdir.h
+CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/qfile.h
+CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/qfiledevice.h
+CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/qfileinfo.h
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/qflags.h
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/qgenericatomic.h
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o: /usr/include/qt/QtCore/qglobal.h

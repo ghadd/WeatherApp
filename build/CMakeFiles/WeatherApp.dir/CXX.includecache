@@ -6,10 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/ghadd/Development/CPP/WeatherApp/src/config.cpp
+config.h
+/home/ghadd/Development/CPP/WeatherApp/src/config.h
+
 /home/ghadd/Development/CPP/WeatherApp/src/config.h
 string
 -
 string_view
+-
+
+/home/ghadd/Development/CPP/WeatherApp/src/logic.h
+utility
+-
+vector
 -
 
 /home/ghadd/Development/CPP/WeatherApp/src/main.cpp
@@ -23,6 +33,18 @@ weather.h
 /home/ghadd/Development/CPP/WeatherApp/src/weather.h
 place.h
 /home/ghadd/Development/CPP/WeatherApp/src/place.h
+utility
+-
+vector
+-
+logic.h
+/home/ghadd/Development/CPP/WeatherApp/src/logic.h
+
+/home/ghadd/Development/CPP/WeatherApp/src/place.cpp
+place.h
+/home/ghadd/Development/CPP/WeatherApp/src/place.h
+iostream
+-
 
 /home/ghadd/Development/CPP/WeatherApp/src/place.h
 QString
@@ -38,6 +60,10 @@ tao/json.hpp
 config.h
 /home/ghadd/Development/CPP/WeatherApp/src/config.h
 
+/home/ghadd/Development/CPP/WeatherApp/src/weather.cpp
+weather.h
+/home/ghadd/Development/CPP/WeatherApp/src/weather.h
+
 /home/ghadd/Development/CPP/WeatherApp/src/weather.h
 QString
 -
@@ -46,6 +72,10 @@ QTextStream
 QDate
 -
 QtGlobal
+-
+QDir
+-
+QFile
 -
 cpr/cpr.h
 -
@@ -58,6 +88,10 @@ weatherinfo.h
 config.h
 /home/ghadd/Development/CPP/WeatherApp/src/config.h
 
+/home/ghadd/Development/CPP/WeatherApp/src/weatherinfo.cpp
+weatherinfo.h
+/home/ghadd/Development/CPP/WeatherApp/src/weatherinfo.h
+
 /home/ghadd/Development/CPP/WeatherApp/src/weatherinfo.h
 QtGlobal
 -
@@ -65,6 +99,14 @@ QtGlobal
 /usr/include/qt/QtCore/QDate
 qdatetime.h
 /usr/include/qt/QtCore/qdatetime.h
+
+/usr/include/qt/QtCore/QDir
+qdir.h
+/usr/include/qt/QtCore/qdir.h
+
+/usr/include/qt/QtCore/QFile
+qfile.h
+/usr/include/qt/QtCore/qfile.h
 
 /usr/include/qt/QtCore/QString
 qstring.h
@@ -224,6 +266,40 @@ list
 map
 -
 utility
+-
+
+/usr/include/qt/QtCore/qdir.h
+QtCore/qstring.h
+-
+QtCore/qfileinfo.h
+-
+QtCore/qstringlist.h
+-
+QtCore/qshareddata.h
+-
+
+/usr/include/qt/QtCore/qfile.h
+QtCore/qfiledevice.h
+-
+QtCore/qstring.h
+-
+stdio.h
+-
+
+/usr/include/qt/QtCore/qfiledevice.h
+QtCore/qiodevice.h
+-
+QtCore/qstring.h
+-
+
+/usr/include/qt/QtCore/qfileinfo.h
+QtCore/qfile.h
+-
+QtCore/qlist.h
+-
+QtCore/qshareddata.h
+-
+QtCore/qmetatype.h
 -
 
 /usr/include/qt/QtCore/qflags.h

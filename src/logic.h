@@ -1,8 +1,13 @@
 #ifndef LOGIC_H
 #define LOGIC_H
 
-#include <utility>
+#include <array>
 #include <vector>
+#include <utility>
+
+#include <QDir>
+#include <QDirIterator>
+#include <QDate>
 
 template <typename T>
 using data_t = std::pair<T, T>;

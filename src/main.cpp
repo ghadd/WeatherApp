@@ -11,11 +11,16 @@
 #include "logic.h"
 
 int main() {
-    Place *place = new Place("Україна", "Львів");
+    std::string country = "Польща", city = "Щецин";
+
+    Place *place = new Place(
+                QString::fromStdString(country),
+                QString::fromStdString(city)
+                );
     place->validateSelf();
 
-
-    std::cout << place->toQString().toStdString() << " " << place->lat() << " " << place->lon() << std::endl;
+    Weather weather = Weather::guessAtDate(new QDate(2020, 10, 30), place);
+    weather.save();
 
     return 0;
 }

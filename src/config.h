@@ -40,12 +40,13 @@ namespace config {
      */
     inline constexpr auto API_ENTRY_OPEN_CAGE = "https://api.opencagedata.com/geocode/v1/json"sv;
 
-    /* %1: $HOME
-     * %2: Country
+    /* %2: Country
      * %3: City
-     * %4: Date (ISO)
      */
-    inline constexpr auto WEATHER_DIRECTORY_FORMAT = "%1/.weather/%2/%3/%4"sv;
+    inline constexpr auto WEATHER_DIRECTORY_FORMAT = ".weather/%2/%3"sv;
+
+    // %1: Date (ISO)
+    inline constexpr auto WEATHER_FILE_FORMAT = "%1.json";
 
     std::string as_string(const std::string_view &sv);
 }
