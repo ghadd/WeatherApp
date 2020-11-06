@@ -20,30 +20,31 @@
 
 #define constructors public
 #define s_public public
-#define s_private private
 #define getset public
 #define members private
 #define operators public
 #define conversions public
 
-class Weather
-{   
+class Weather {
 constructors:
+
     Weather()
-        : date_(nullptr), place_(nullptr), winfo_(nullptr) {}; // [x]
+            : date_(nullptr), place_(nullptr), winfo_(nullptr) {}; // [x]
     Weather(const Weather &weather)
-        : date_(weather.date()), place_(weather.place()), winfo_(weather.winfo()) {}; // [x]
+            : date_(weather.date()), place_(weather.place()), winfo_(weather.winfo()) {}; // [x]
     Weather(QDate *date, Place *place, WeatherInfo *winfo)
-        : date_(date), place_(place), winfo_(winfo) {}; // [x]
+            : date_(date), place_(place), winfo_(winfo) {}; // [x]
 
     // [-]
     Weather(QDate *date, Place *place); // throws warning when date is not in latest 5 days
 
 conversions:
-    [[nodiscard]] const tao::json::value toJson() const; // [x]
-    static Weather fromJson(tao::json::value jsonValue); // [x]
+
+    [[nodiscard]] tao::json::value toJson() const; // [x]
+    static Weather fromJson(const tao::json::value& jsonValue); // [x]
 
 operators:
+
     friend QTextStream &operator<<(QTextStream &out, const Weather &weather); // [x]
     friend QTextStream &operator>>(QTextStream &in, Weather &weather); // [x]
 
@@ -51,6 +52,7 @@ operators:
     bool operator!=(const Weather &weather) const { return !(*this == weather); } // [x]
 
 s_public:
+
     static Weather guessAtDate(QDate *date, Place *place); // [x]
     static Weather currentInPlaceAPI(Place *place); // [-x] // status check
     static Weather inPlaceAtDateAPI(QDate *date, Place *place); // [-]
@@ -61,7 +63,7 @@ s_public:
     static const Weather INVALID_WEATHER;
 
 public:
-    bool isValid() const; // [x]
+    [[nodiscard]] bool isValid() const; // [x]
     void save() const; // [x]
     // throws error, caught when saving (file stuff)
 
@@ -78,21 +80,21 @@ members:
     friend class WeatherInfo;
 
 getset:
-    QDate *date() const; // [x]
+
+    [[nodiscard]] QDate *date() const; // [x]
     void setDate(QDate *pDate); // [x]
 
-    Place *place() const; // [x]
+    [[nodiscard]] Place *place() const; // [x]
     void setPlace(Place *pPlace); // [x]
 
-    WeatherInfo *winfo() const; // [x]
+    [[nodiscard]] WeatherInfo *winfo() const; // [x]
     void setWinfo(WeatherInfo *winfo); // [x]
 };
 
 int totalDays(const QDate &date);
 
-template <typename T, int N>
-std::array<std::vector<data_t<T>>, N> getCollectedData(QDir dir)
-{
+template<typename T, int N>
+std::array<std::vector<data_t<T>>, N> getCollectedData(QDir dir) {
     std::array<std::vector<data_t<T> >, N> dataSet;
 
     dir.setFilter(QDir::Files);
@@ -102,11 +104,9 @@ std::array<std::vector<data_t<T>>, N> getCollectedData(QDir dir)
 
     uint pos = 0;
     QDirIterator dirIt(dir);
-    while (dirIt.hasNext())
-    {
+    while (dirIt.hasNext()) {
         QFile file(dirIt.next());
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
             // handle this
         }
 
@@ -128,9 +128,8 @@ std::array<std::vector<data_t<T>>, N> getCollectedData(QDir dir)
     return dataSet;
 }
 
-template <typename T, int N>
-std::array<T, N> interpolateData(const std::array<std::vector<data_t<T> >, N> &dataSet, T atX)
-{
+template<typename T, int N>
+std::array<T, N> interpolateData(const std::array<std::vector<data_t<T> >, N> &dataSet, T atX) {
     std::array<T, N> interpolatedData;
 
     for (int i = 0; i < N; i++)

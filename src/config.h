@@ -11,8 +11,8 @@ namespace config {
 
 
     /* Params:
-     * 'lat': place lattitudue
-     * 'lon': place longtitude
+     * 'lat': place latitude
+     * 'lon': place longitude
      * 'appid': api key
      *
      * Result: ::main
@@ -23,8 +23,8 @@ namespace config {
     inline constexpr auto API_ENTRY_CURRENT_WEATHER = "api.openweathermap.org/data/2.5/weather"sv;
 
     /* Params:
-     * 'lat': place lattitudue
-     * 'lon': place longtitude
+     * 'lat': place latitude
+     * 'lon': place longitude
      * 'dt': time in unix
      * 'appid': api key
      */

@@ -114,6 +114,7 @@ CMakeFiles/WeatherApp.dir/WeatherApp_autogen/mocs_compilation.cpp.o
 CMakeFiles/WeatherApp.dir/src/app.cpp.o
  /home/ghadd/Development/CPP/WeatherApp/src/app.cpp
  /home/ghadd/Development/CPP/WeatherApp/src/app.h
+ /home/ghadd/Development/CPP/WeatherApp/src/ui_app.h
  /usr/include/qt/QtCore/QVariant
  /usr/include/qt/QtCore/qalgorithms.h
  /usr/include/qt/QtCore/qarraydata.h
@@ -236,7 +237,6 @@ CMakeFiles/WeatherApp.dir/src/app.cpp.o
  /usr/include/qt/QtWidgets/qtwidgets-config.h
  /usr/include/qt/QtWidgets/qtwidgetsglobal.h
  /usr/include/qt/QtWidgets/qwidget.h
- WeatherApp_autogen/include/ui_app.h
 CMakeFiles/WeatherApp.dir/src/config.cpp.o
  /home/ghadd/Development/CPP/WeatherApp/src/config.cpp
  /home/ghadd/Development/CPP/WeatherApp/src/config.h
@@ -248,7 +248,9 @@ CMakeFiles/WeatherApp.dir/src/main.cpp.o
  /home/ghadd/Development/CPP/WeatherApp/src/weather.h
  /home/ghadd/Development/CPP/WeatherApp/src/weatherinfo.h
  /usr/include/qt/QtCore/QDate
+ /usr/include/qt/QtCore/QDateTime
  /usr/include/qt/QtCore/QDir
+ /usr/include/qt/QtCore/QDirIterator
  /usr/include/qt/QtCore/QFile
  /usr/include/qt/QtCore/QString
  /usr/include/qt/QtCore/QTextStream
@@ -273,6 +275,7 @@ CMakeFiles/WeatherApp.dir/src/main.cpp.o
  /usr/include/qt/QtCore/qdatetime.h
  /usr/include/qt/QtCore/qdebug.h
  /usr/include/qt/QtCore/qdir.h
+ /usr/include/qt/QtCore/qdiriterator.h
  /usr/include/qt/QtCore/qfile.h
  /usr/include/qt/QtCore/qfiledevice.h
  /usr/include/qt/QtCore/qfileinfo.h
@@ -361,12 +364,15 @@ CMakeFiles/WeatherApp.dir/src/place.cpp.o
  /usr/include/qt/QtCore/qversiontagging.h
 CMakeFiles/WeatherApp.dir/src/weather.cpp.o
  /home/ghadd/Development/CPP/WeatherApp/src/config.h
+ /home/ghadd/Development/CPP/WeatherApp/src/logic.h
  /home/ghadd/Development/CPP/WeatherApp/src/place.h
  /home/ghadd/Development/CPP/WeatherApp/src/weather.cpp
  /home/ghadd/Development/CPP/WeatherApp/src/weather.h
  /home/ghadd/Development/CPP/WeatherApp/src/weatherinfo.h
  /usr/include/qt/QtCore/QDate
+ /usr/include/qt/QtCore/QDateTime
  /usr/include/qt/QtCore/QDir
+ /usr/include/qt/QtCore/QDirIterator
  /usr/include/qt/QtCore/QFile
  /usr/include/qt/QtCore/QString
  /usr/include/qt/QtCore/QTextStream
@@ -391,6 +397,7 @@ CMakeFiles/WeatherApp.dir/src/weather.cpp.o
  /usr/include/qt/QtCore/qdatetime.h
  /usr/include/qt/QtCore/qdebug.h
  /usr/include/qt/QtCore/qdir.h
+ /usr/include/qt/QtCore/qdiriterator.h
  /usr/include/qt/QtCore/qfile.h
  /usr/include/qt/QtCore/qfiledevice.h
  /usr/include/qt/QtCore/qfileinfo.h
