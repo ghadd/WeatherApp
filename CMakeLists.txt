@@ -15,10 +15,11 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 add_executable(WeatherApp
-  src/main.cpp
-  src/app.cpp
-  src/app.h
-  src/app.ui
+  main.cpp
+  app.cpp
+  app.h
+  app.ui
+
   src/weather.cpp
   src/weather.h
   src/place.cpp
@@ -28,6 +29,8 @@ add_executable(WeatherApp
   src/config.cpp
   src/config.h
   src/logic.h
+
+  assets.qrc
   )
 
 target_link_libraries(WeatherApp PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
