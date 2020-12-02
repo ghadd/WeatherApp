@@ -19,104 +19,106 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
-        <item>
-         <widget class="QLabel" name="label_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Texas, USA</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignBottom|Qt::AlignJustify</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>50.123NE, 29.123SW</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item alignment="Qt::AlignRight|Qt::AlignVCenter">
-         <widget class="QLabel" name="label">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Current observing date</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item alignment="Qt::AlignRight|Qt::AlignTop">
-         <widget class="QDateTimeEdit" name="dateTimeEdit">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
+     <widget class="QWidget" name="cityInfoWidget" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <layout class="QVBoxLayout" name="cityInfoVBoxLayout">
+         <item>
+          <widget class="QLabel" name="cityNamingLabel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Texas, USA</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignJustify</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="cityCoordinatesLabel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>50.123NE, 29.123SW</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="currentObservingDateVBoxLayout">
+         <item alignment="Qt::AlignRight|Qt::AlignVCenter">
+          <widget class="QLabel" name="currentObservingDateLabel">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Current observing date</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item alignment="Qt::AlignRight|Qt::AlignTop">
+          <widget class="QDateTimeEdit" name="currentObservingDateEdit">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
     </item>
     <item>
-     <widget class="QScrollArea" name="scrollArea">
+     <widget class="QScrollArea" name="weatherInfoScrollArea">
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_3">
+      <widget class="QWidget" name="daysWeatherWidget">
        <property name="geometry">
         <rect>
          <x>0</x>
          <y>0</y>
          <width>863</width>
-         <height>299</height>
+         <height>283</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_9">
+         <layout class="QVBoxLayout" name="dayVBoxLayout_1">
           <item>
-           <widget class="QLabel" name="label_15">
+           <widget class="QLabel" name="dayDateLabel_1">
             <property name="text">
              <string>Date</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="imageLabel_0">
+           <widget class="QLabel" name="dayImageLabel_1">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -132,7 +134,7 @@
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer_7">
+           <spacer name="daySpacer_1">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -145,7 +147,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_6">
+           <widget class="QLabel" name="dayWeatherStub_1">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -163,23 +165,23 @@ Humidity: 80%</string>
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_13">
+         <layout class="QVBoxLayout" name="dayVBoxLayout_2">
           <item>
-           <widget class="QLabel" name="label_11">
+           <widget class="QLabel" name="dayDateLabel_2">
             <property name="text">
              <string>Date</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="imageLabel_1">
+           <widget class="QLabel" name="dayImageLabel_2">
             <property name="text">
              <string>Image</string>
             </property>
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer_3">
+           <spacer name="daySpacer_2">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -192,7 +194,7 @@ Humidity: 80%</string>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_10">
+           <widget class="QLabel" name="dayWeatherStub_2">
             <property name="text">
              <string>WeatherStub 
 Temp: 300K
@@ -204,23 +206,23 @@ Humidity: 80%</string>
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_8">
+         <layout class="QVBoxLayout" name="dayVBoxLayout_3">
           <item>
-           <widget class="QLabel" name="label_16">
+           <widget class="QLabel" name="dayDateLabel_3">
             <property name="text">
              <string>Date</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="imageLabel_2">
+           <widget class="QLabel" name="dayImageLabel_3">
             <property name="text">
              <string>Image</string>
             </property>
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer_8">
+           <spacer name="daySpacer_3">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -233,7 +235,7 @@ Humidity: 80%</string>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="dayWeatherStub_3">
             <property name="text">
              <string>WeatherStub 
 Temp: 300K
@@ -245,23 +247,23 @@ Humidity: 80%</string>
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_5">
+         <layout class="QVBoxLayout" name="dayVBoxLayout_4">
           <item>
-           <widget class="QLabel" name="label_17">
+           <widget class="QLabel" name="dayDateLabel_4">
             <property name="text">
              <string>Date</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="imageLabel_3">
+           <widget class="QLabel" name="dayImageLabel_4">
             <property name="text">
              <string>Image</string>
             </property>
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer_9">
+           <spacer name="daySpacer_4">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -274,7 +276,7 @@ Humidity: 80%</string>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_24">
+           <widget class="QLabel" name="dayWeatherStub_4">
             <property name="text">
              <string>WeatherStub 
 Temp: 300K
@@ -286,23 +288,23 @@ Humidity: 80%</string>
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_11">
+         <layout class="QVBoxLayout" name="dayVBoxLayout_5">
           <item>
-           <widget class="QLabel" name="label_13">
+           <widget class="QLabel" name="dayDateLabel_5">
             <property name="text">
              <string>Date</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="imageLabel_4">
+           <widget class="QLabel" name="dayImageLabel_5">
             <property name="text">
              <string>Image</string>
             </property>
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer_5">
+           <spacer name="daySpacer_5">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -315,7 +317,7 @@ Humidity: 80%</string>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_8">
+           <widget class="QLabel" name="dayWeatherStub_5">
             <property name="text">
              <string>WeatherStub 
 Temp: 300K
@@ -327,23 +329,23 @@ Humidity: 80%</string>
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_10">
+         <layout class="QVBoxLayout" name="dayVBoxLayout_6">
           <item>
-           <widget class="QLabel" name="label_14">
+           <widget class="QLabel" name="dayDateLabel_6">
             <property name="text">
              <string>Date</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="imageLabel_5">
+           <widget class="QLabel" name="dayImageLabel_6">
             <property name="text">
              <string>Image</string>
             </property>
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer_6">
+           <spacer name="daySpacer_6">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -356,7 +358,7 @@ Humidity: 80%</string>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_7">
+           <widget class="QLabel" name="dayWeatherStub_6">
             <property name="text">
              <string>WeatherStub 
 Temp: 300K
@@ -368,23 +370,23 @@ Humidity: 80%</string>
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_12">
+         <layout class="QVBoxLayout" name="dayVBoxLayout_7">
           <item>
-           <widget class="QLabel" name="label_5">
+           <widget class="QLabel" name="dayDateLabel_7">
             <property name="text">
              <string>Date</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="imageLabel_6">
+           <widget class="QLabel" name="dayImageLabel_7">
             <property name="text">
              <string>Image</string>
             </property>
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer_4">
+           <spacer name="daySpacer_7">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -397,7 +399,7 @@ Humidity: 80%</string>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_9">
+           <widget class="QLabel" name="dayWeatherStub_7">
             <property name="text">
              <string>WeatherStub 
 Temp: 300K
@@ -427,9 +429,9 @@ Humidity: 80%</string>
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="actionNew_Weather_Record"/>
+    <addaction name="actionNew_City"/>
     <addaction name="actionOpen_City"/>
-    <addaction name="actionNew_Weather_Record_2"/>
+    <addaction name="actionNew_Weather_Record"/>
     <addaction name="actionClose_city"/>
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
@@ -452,7 +454,7 @@ Humidity: 80%</string>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionNew_Weather_Record">
+  <action name="actionNew_City">
    <property name="icon">
     <iconset theme="folder-new">
      <normaloff>.</normaloff>.</iconset>
@@ -470,7 +472,7 @@ Humidity: 80%</string>
     <string>Open City...</string>
    </property>
   </action>
-  <action name="actionNew_Weather_Record_2">
+  <action name="actionNew_Weather_Record">
    <property name="text">
     <string>New Weather Record...</string>
    </property>

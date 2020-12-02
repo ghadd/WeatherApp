@@ -2,6 +2,10 @@
 #define APP_H
 
 #include <QMainWindow>
+#include <QInputDialog>
+#include <QWidgetAction>
+
+#include "src/place.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class App; }
@@ -15,8 +19,12 @@ public:
 
     ~App();
 
+private slots:
+    void on_actionNew_City_triggered();
+
 private:
     Ui::App *ui;
+    Place *currentPlace;
 };
 
 #endif // APP_H

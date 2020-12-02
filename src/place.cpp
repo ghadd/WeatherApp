@@ -37,8 +37,9 @@ void Place::validateSelf() {
         jsonResponse = tao::json::from_string(cprResponse.text);
     }
     catch (const tao::json::pegtl::parse_error &pe) {
+        InvalidPlaceException exc(*this);
         *this = INVALID_PLACE;
-        __throw_exception_again;
+        throw exc;
     }
 
     // check for valid status
@@ -49,7 +50,7 @@ void Place::validateSelf() {
     validated = true;
 }
 
-QString Place::toQString() {
+QString Place::toQString() const {
     return QString("%1,%2").arg(city_, country_);
 }
 

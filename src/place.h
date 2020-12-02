@@ -4,6 +4,7 @@
 #include <QString>
 #include <QtGlobal>
 #include <utility>
+#include <exception>
 
 #include <cpr/cpr.h>
 #include <tao/json.hpp>
@@ -16,7 +17,7 @@ public:
 
     Place(const QString &country, const QString &city);
 
-    QString toQString();
+    QString toQString() const;
 
     bool operator==(const Place &place) const;
 
@@ -53,6 +54,19 @@ private:
     qreal lon_{};
 
     bool validated{};
+};
+
+class InvalidPlaceException : std::exception {
+public:
+    InvalidPlaceException(const Place &place) {
+        what_ = place.toQString();
+    }
+    const char *what() const noexcept override {
+        return "";
+    }
+
+private:
+    QString what_;
 };
 
 #endif // PLACE_H
