@@ -5,6 +5,16 @@ const WeatherInfo WeatherInfo::INVALID_WEATHER_INFO = {};
 WeatherInfo::WeatherInfo()
 = default;
 
+QString WeatherInfo::toQString() const
+{
+    return QString("Temperature: %1°C\n"
+                   "Pressure: %2hPa\n"
+                   "Humidity %3%")
+            .arg(temperature_ - 273.15)
+            .arg(pressure_)
+            .arg(humidity_);
+}
+
 bool WeatherInfo::operator==(const WeatherInfo &winfo) const {
     return this->temperature() == winfo.temperature() &&
            this->pressure() == winfo.pressure() &&

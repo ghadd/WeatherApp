@@ -7,5 +7,7 @@
         <file>images/weather_states/rainy.png</file>
         <file>images/weather_states/sunny.png</file>
         <file>images/weather_states/thunderstom.png</file>
+        <file>style/stylesheet.qss</file>
+        <file>images/background.jpg</file>
     </qresource>
 </RCC>

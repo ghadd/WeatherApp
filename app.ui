@@ -13,6 +13,13 @@
   <property name="windowTitle">
    <string>WeatherApp</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="assets.qrc">
+    <normaloff>:/images/weather_states/sunny.png</normaloff>:/images/weather_states/sunny.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="layoutDirection">
     <enum>Qt::LeftToRight</enum>
@@ -160,7 +167,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="dayWeatherStub_1">
+           <widget class="QLabel" name="dayStubLabel_1">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -207,7 +214,7 @@ Humidity: 80%</string>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="dayWeatherStub_2">
+           <widget class="QLabel" name="dayStubLabel_2">
             <property name="text">
              <string>WeatherStub 
 Temp: 300K
@@ -248,7 +255,7 @@ Humidity: 80%</string>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="dayWeatherStub_3">
+           <widget class="QLabel" name="dayStubLabel_3">
             <property name="text">
              <string>WeatherStub 
 Temp: 300K
@@ -289,7 +296,7 @@ Humidity: 80%</string>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="dayWeatherStub_4">
+           <widget class="QLabel" name="dayStubLabel_4">
             <property name="text">
              <string>WeatherStub 
 Temp: 300K
@@ -330,7 +337,7 @@ Humidity: 80%</string>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="dayWeatherStub_5">
+           <widget class="QLabel" name="dayStubLabel_5">
             <property name="text">
              <string>WeatherStub 
 Temp: 300K
@@ -371,7 +378,7 @@ Humidity: 80%</string>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="dayWeatherStub_6">
+           <widget class="QLabel" name="dayStubLabel_6">
             <property name="text">
              <string>WeatherStub 
 Temp: 300K
@@ -412,7 +419,7 @@ Humidity: 80%</string>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="dayWeatherStub_7">
+           <widget class="QLabel" name="dayStubLabel_7">
             <property name="text">
              <string>WeatherStub 
 Temp: 300K
@@ -524,6 +531,8 @@ Humidity: 80%</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="assets.qrc"/>
+ </resources>
  <connections/>
 </ui>

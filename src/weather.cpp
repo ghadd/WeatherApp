@@ -74,7 +74,7 @@ Weather Weather::load(QDate *date, Place *place)
 
     QTextStream ts(&possibleFile);
     Weather weather;
-    ts << weather;
+    ts >> weather;
 
     possibleFile.close();
 

@@ -2,6 +2,7 @@
 #define WEATHERINFO_H
 
 #include <QtGlobal>
+#include <QString>
 
 class WeatherInfo {
 public:
@@ -11,6 +12,8 @@ public:
 
     WeatherInfo(qreal temperature, qreal pressure, qreal humidity)
             : temperature_(temperature), pressure_(pressure), humidity_(humidity) {};
+
+    QString toQString() const;
 
     bool operator==(const WeatherInfo &winfo) const;
 

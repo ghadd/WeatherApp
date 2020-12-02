@@ -8,6 +8,34 @@ App::App(QWidget *parent)
     ui->cityInfoWidget->setVisible(false);
     ui->weatherInfoScrollArea->setVisible(false);
     currentPlace = nullptr;
+
+    dateLabels = {ui->dayDateLabel_1,
+                  ui->dayDateLabel_2,
+                  ui->dayDateLabel_3,
+                  ui->dayDateLabel_4,
+                  ui->dayDateLabel_5,
+                  ui->dayDateLabel_6,
+                  ui->dayDateLabel_7 };
+
+    imageLabels = {ui->dayImageLabel_1,
+                   ui->dayImageLabel_2,
+                   ui->dayImageLabel_3,
+                   ui->dayImageLabel_4,
+                   ui->dayImageLabel_5,
+                   ui->dayImageLabel_6,
+                   ui->dayImageLabel_7 };
+
+    stubLabels = {ui->dayStubLabel_1,
+                  ui->dayStubLabel_2,
+                  ui->dayStubLabel_3,
+                  ui->dayStubLabel_4,
+                  ui->dayStubLabel_5,
+                  ui->dayStubLabel_6,
+                  ui->dayStubLabel_7 };
+
+    initLabelImageSize = QSize(100, 100);
+    initSize = this->size();
+    pixmap.load(":/images/weather_states/half_sunny_day.png"); // todo
 }
 
 App::~App() {
@@ -95,7 +123,7 @@ void App::loadPlace(bool open)
     ui->currentObservingDateEdit->setDate(QDate::currentDate());
 
     updateWeatherInfo();
-    showWeather();
+    showWeatherWeek();
 }
 
 void App::updateWeatherInfo()
@@ -115,7 +143,40 @@ void App::updateWeatherInfo()
     currentShownWeather = weatherWeek;
 }
 
-void App::showWeather()
+void App::showWeatherWeek()
 {
+    ui->weatherInfoScrollArea->setVisible(true);
 
+    for (int i = 0; i < 7; i++) {
+        showWeather(currentShownWeather[i], i);
+    }
+}
+
+void App::showWeather(const Weather &weather, size_t idx)
+{
+    QLabel *date = dateLabels[idx];
+    QLabel *image = imageLabels[idx];
+    QLabel *stub = stubLabels[idx];
+
+    date->setText(weather.date()->toString());
+
+    image->setPixmap(pixmap.scaled(image->size(), Qt::KeepAspectRatio));
+    image->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+
+    stub->setText(weather.winfo()->toQString());
+}
+
+void App::resizeEvent(QResizeEvent *event)
+{
+    QSize size = event->size();
+
+    qreal resizeFactor = (qreal)size.width() / (qreal)initSize.width();
+    if (resizeFactor)
+    {
+        for (int i = 0; i < imageLabels.size(); i++)
+        {
+            imageLabels[i]->setFixedSize(initLabelImageSize * resizeFactor);
+            imageLabels[i]->setPixmap(pixmap.scaled(imageLabels[i]->size(), Qt::KeepAspectRatio));
+        }
+    }
 }

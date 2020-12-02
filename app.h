@@ -6,6 +6,7 @@
 #include <QInputDialog>
 #include <QWidgetAction>
 #include <QMessageBox>
+#include <QResizeEvent>
 
 #include "src/place.h"
 #include "src/config.h"
@@ -23,6 +24,8 @@ public:
 
     ~App();
 
+    void resizeEvent(QResizeEvent *event) override;
+
 private slots:
     void on_actionNew_City_triggered();
 
@@ -32,12 +35,24 @@ private:
     Place *getPlace();
     void loadPlace(bool open);
     void updateWeatherInfo();
-    void showWeather();
+    void showWeatherWeek();
+    void showWeather(const Weather &weather, size_t idx);
 
 private:
     Ui::App *ui;
     Place *currentPlace;
     QVector<Weather> currentShownWeather;
+
+private:
+    QVector<QLabel *> dateLabels;
+    QVector<QLabel *> imageLabels;
+    QVector<QLabel *> stubLabels;
+
+// Images // renaming needed
+private:
+    QPixmap pixmap;
+    QSize initSize;
+    QSize initLabelImageSize;
 };
 
 #endif // APP_H
