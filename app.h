@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QInputDialog>
 #include <QWidgetAction>
+#include <QMessageBox>
 
 #include "src/place.h"
 
@@ -21,6 +22,9 @@ public:
 
 private slots:
     void on_actionNew_City_triggered();
+
+private:
+    Place *getPlace();
 
 private:
     Ui::App *ui;

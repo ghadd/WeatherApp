@@ -18,6 +18,7 @@ public:
     Place(const QString &country, const QString &city);
 
     QString toQString() const;
+    QString coordsQString() const;
 
     bool operator==(const Place &place) const;
 

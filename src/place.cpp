@@ -51,7 +51,19 @@ void Place::validateSelf() {
 }
 
 QString Place::toQString() const {
-    return QString("%1,%2").arg(city_, country_);
+    return QString("%1, %2").arg(city_, country_);
+}
+
+QString Place::coordsQString() const
+{
+    char latChar = lat_ > 0 ? 'N' : 'S';
+    char lonChar = lon_ > 0 ? 'E' : 'W';
+
+    return QString("%1%2, %3%4")
+            .arg(lat_)
+            .arg(latChar)
+            .arg(lon_)
+            .arg(lonChar);
 }
 
 bool Place::operator==(const Place &place) const {
