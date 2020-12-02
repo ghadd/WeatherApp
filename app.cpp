@@ -17,22 +17,20 @@ App::~App() {
 
 void App::on_actionNew_City_triggered()
 {
-    Place *place;
     try {
-        place = getPlace();
-    } catch (const InvalidPlaceException &e) {
-        QMessageBox::warning(this, "City not found.", QString::fromLocal8Bit(e.what()));
-        return;
+        loadPlace(false);
+    }  catch (const std::runtime_error &e) {
+        QMessageBox::warning(this, "City already exists.", QString::fromLocal8Bit(e.what()));
     }
-    catch (const std::runtime_error &e) {
-        /* No user feedback for cancelled input */
-        return;
-    }
+}
 
-    ui->cityInfoWidget->setVisible(true);
-    ui->cityNamingLabel->setText(place->toQString());
-    ui->cityCoordinatesLabel->setText(place->coordsQString());
-    ui->currentObservingDateEdit->setDate(QDate::currentDate());
+void App::on_actionOpen_City_triggered()
+{
+    try {
+        loadPlace(true);
+    }  catch (const std::runtime_error &e) {
+        QMessageBox::warning(this, "City was not found.", QString::fromLocal8Bit(e.what()));
+    }
 }
 
 Place *App::getPlace()
@@ -52,3 +50,47 @@ Place *App::getPlace()
     return place;
 }
 
+void App::loadPlace(bool open)
+{
+    Place *place;
+    try {
+        place = getPlace();
+    } catch (const InvalidPlaceException &e) {
+        QMessageBox::warning(this, "City not found.", QString::fromLocal8Bit(e.what()));
+        return;
+    }
+    catch (const std::runtime_error &e) {
+        /* No user feedback for cancelled input */
+        return;
+    }
+
+    QString folderName = QDir::home().filePath(QString::fromStdString(config::as_string(config::WEATHER_DIRECTORY_FORMAT))
+            .arg(place->country())
+            .arg(place->city()));
+
+    if (open) {
+        if (!QDir(folderName).exists()) {
+            QString message = place->toQString() + " is not found in file system. Try adding new city.";
+
+            throw std::runtime_error(message.toLocal8Bit());
+        }
+    }
+    else {
+        if (QDir(folderName).exists()) {
+            QString message = place->toQString() + " already exists. Try opening it.";
+
+            throw std::runtime_error(message.toLocal8Bit());
+        }
+        else {
+            if (!QDir::home().mkpath(folderName)) {
+                throw std::runtime_error("Could not create directory for " + place->toQString().toLocal8Bit());
+            }
+        }
+    }
+
+    currentPlace = place;
+    ui->cityInfoWidget->setVisible(true);
+    ui->cityNamingLabel->setText(place->toQString());
+    ui->cityCoordinatesLabel->setText(place->coordsQString());
+    ui->currentObservingDateEdit->setDate(QDate::currentDate());
+}
