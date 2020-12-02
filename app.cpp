@@ -93,4 +93,29 @@ void App::loadPlace(bool open)
     ui->cityNamingLabel->setText(place->toQString());
     ui->cityCoordinatesLabel->setText(place->coordsQString());
     ui->currentObservingDateEdit->setDate(QDate::currentDate());
+
+    updateWeatherInfo();
+    showWeather();
+}
+
+void App::updateWeatherInfo()
+{
+    QVector<Weather> weatherWeek;
+    QDate endDate = ui->currentObservingDateEdit->date();
+    QDate startDate = endDate.addDays(-7);
+
+    for (QDate it = startDate; it != endDate; it = it.addDays(1)) {
+        Weather weather = Weather::inPlace(&it, currentPlace);
+        weatherWeek.append(weather);
+        if (weather.isValid()) {
+            weather.save();
+        }
+    }
+
+    currentShownWeather = weatherWeek;
+}
+
+void App::showWeather()
+{
+
 }

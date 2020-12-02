@@ -52,6 +52,7 @@ operators:
     bool operator!=(const Weather &weather) const { return !(*this == weather); } // [x]
 
 s_public:
+    static Weather load(QDate *date, Place *place);
 
     static Weather guessAtDate(QDate *date, Place *place); // [x]
     static Weather currentInPlaceAPI(Place *place); // [-x] // status check

@@ -9,6 +9,7 @@
 
 #include "src/place.h"
 #include "src/config.h"
+#include "src/weather.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class App; }
@@ -30,10 +31,13 @@ private slots:
 private:
     Place *getPlace();
     void loadPlace(bool open);
+    void updateWeatherInfo();
+    void showWeather();
 
 private:
     Ui::App *ui;
     Place *currentPlace;
+    QVector<Weather> currentShownWeather;
 };
 
 #endif // APP_H

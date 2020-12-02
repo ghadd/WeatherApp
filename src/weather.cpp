@@ -1,6 +1,10 @@
 #include "weather.h"
 
-const Weather Weather::INVALID_WEATHER = {};
+const Weather Weather::INVALID_WEATHER = Weather(
+            new QDate(0, 0, 0),
+            new Place("", ""),
+            new WeatherInfo(0, 0, 0)
+            );
 
 QDate *Weather::date() const { return date_; }
 
@@ -52,6 +56,31 @@ Weather Weather::fromJson(const tao::json::value& jsonValue) {
     return Weather(date, place, winfo);
 }
 
+Weather Weather::load(QDate *date, Place *place)
+{
+    QDir possibleDir = QDir::home();
+    QString possibleFolder = QString::fromStdString(config::as_string(config::WEATHER_DIRECTORY_FORMAT))
+            .arg(place->country())
+            .arg(place->city());
+
+    possibleDir.cd(possibleFolder);
+    QString possibleFileName = QString::fromStdString(config::as_string(config::WEATHER_FILE_FORMAT))
+            .arg(date->toString(Qt::ISODate));
+
+    QFile possibleFile(possibleDir.filePath(possibleFileName));
+    if (!possibleFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        throw std::runtime_error("Could not load weather from " + possibleFileName.toLocal8Bit());
+    }
+
+    QTextStream ts(&possibleFile);
+    Weather weather;
+    ts << weather;
+
+    possibleFile.close();
+
+    return weather;
+}
+
 Weather Weather::currentInPlaceAPI(Place *place) {
     cpr::Response cprResponse =
             cpr::Get(cpr::Url{config::as_string(config::API_ENTRY_CURRENT_WEATHER)},
@@ -100,12 +129,17 @@ Weather Weather::inPlaceAtDateAPI(QDate *date, Place *place) {
 
     // check response status for validity
 
-    auto *winfo =
-            new WeatherInfo(jsonWeather.at("current").as<qreal>("temp"),
-                            jsonWeather.at("current").as<qreal>("pressure"),
-                            jsonWeather.at("current").as<qreal>("humidity"));
+    try {
+        auto *winfo =
+                new WeatherInfo(jsonWeather.at("current").as<qreal>("temp"),
+                               jsonWeather.at("current").as<qreal>("pressure"),
+                               jsonWeather.at("current").as<qreal>("humidity"));
 
-    return Weather(date, place, winfo);
+        return Weather(date, place, winfo);
+    }
+    catch (const std::out_of_range &e) {
+        return Weather::guessAtDate(date, place);
+    }
 }
 
 Weather Weather::guessAtDate(QDate *date, Place *place) {
@@ -130,6 +164,13 @@ Weather Weather::guessAtDate(QDate *date, Place *place) {
 }
 
 Weather Weather::currentInPlace(Place *place, bool api) {
+    // try to locate saved one
+    try {
+        Weather weather = Weather::load(new QDate(QDate::currentDate()), place);
+        return weather;
+    }
+    catch (const std::runtime_error &e) {}
+
     if (api)
         return currentInPlaceAPI(place);
     else
@@ -137,6 +178,13 @@ Weather Weather::currentInPlace(Place *place, bool api) {
 }
 
 Weather Weather::inPlace(QDate *date, Place *place, bool api) {
+    // try to locate saved one
+    try {
+        Weather weather = Weather::load(date, place);
+        return weather;
+    }
+    catch (const std::runtime_error &e) {}
+
     if (api)
         return inPlaceAtDateAPI(date, place);
     else
@@ -181,7 +229,8 @@ void Weather::save() const {
 }
 
 Weather::Weather(QDate *date, Place *place) {
-    // todo loading from API
+    // todo test
+    *this = Weather::inPlace(date, place);
 }
 
 QTextStream &operator<<(QTextStream &out, const Weather &weather) {
