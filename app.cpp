@@ -182,6 +182,22 @@ void App::resizeEvent(QResizeEvent *event)
     }
 }
 
+void App::closeEvent(QCloseEvent *event)
+{
+    event->ignore();
+
+    QMessageBox* box = new QMessageBox(QMessageBox::Question,
+                                       qApp->applicationName(),
+                                       "Are you sure you want to quit?",
+                                       QMessageBox::Yes | QMessageBox::No,
+                                       this);
+
+    QObject::connect(box->button(QMessageBox::Yes), &QAbstractButton::clicked, qApp, &QApplication::quit);
+    QObject::connect(box->button(QMessageBox::No), &QAbstractButton::clicked, box, &QObject::deleteLater);
+    QObject::connect(qApp, &QApplication::aboutToQuit, box, &QObject::deleteLater);
+    box->show();
+}
+
 void App::on_actionAbout_this_project_triggered()
 {
     QMessageBox::about(this, "About this app.",
@@ -208,4 +224,13 @@ void App::on_actionClose_city_triggered()
         QMessageBox::warning(this, "Could not close a place.", "There is no place open at the moment.");
         return;
     }
+
+    ui->cityInfoWidget->setVisible(false);
+    ui->weatherInfoScrollArea->setVisible(false);
+    currentPlace = nullptr;
+}
+
+void App::on_actionQuit_triggered()
+{
+    closeEvent(new QCloseEvent());
 }

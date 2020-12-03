@@ -7,6 +7,8 @@
 #include <QWidgetAction>
 #include <QMessageBox>
 #include <QResizeEvent>
+#include <QAbstractButton>
+#include <QCloseEvent>
 
 #include "src/place.h"
 #include "src/config.h"
@@ -26,6 +28,8 @@ public:
 
     void resizeEvent(QResizeEvent *event) override;
 
+    void closeEvent(QCloseEvent *event) override;
+
 private slots:
     void on_actionNew_City_triggered();
 
@@ -34,6 +38,10 @@ private slots:
     void on_actionAbout_this_project_triggered();
 
     void on_actionAbout_author_triggered();
+
+    void on_actionClose_city_triggered();
+
+    void on_actionQuit_triggered();
 
 private:
     Place *getPlace();
