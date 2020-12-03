@@ -70,7 +70,7 @@ Place *App::getPlace()
 
     QString city = QInputDialog::getText(this, "City", "Enter city in " + country + ":", QLineEdit::Normal , "", &ok);
     if (!ok)
-        throw std::runtime_error("Invalid country");
+        throw std::runtime_error("Invalid city");
 
     Place *place = new Place(country, city);
     place->validateSelf();
@@ -91,6 +91,7 @@ void App::loadPlace(bool open)
         /* No user feedback for cancelled input */
         return;
     }
+
 
     QString folderName = QDir::home().filePath(QString::fromStdString(config::as_string(config::WEATHER_DIRECTORY_FORMAT))
             .arg(place->country())
@@ -178,5 +179,33 @@ void App::resizeEvent(QResizeEvent *event)
             imageLabels[i]->setFixedSize(initLabelImageSize * resizeFactor);
             imageLabels[i]->setPixmap(pixmap.scaled(imageLabels[i]->size(), Qt::KeepAspectRatio));
         }
+    }
+}
+
+void App::on_actionAbout_this_project_triggered()
+{
+    QMessageBox::about(this, "About this app.",
+                       "A Qt5 based course work project which is able to monitor weather in any point "
+                       "in the world, supporting multiple languages thanks to "
+                       "<a href=\"https://openweathermap.org/api\">OpenWeatherMap</a>"
+                       " and "
+                       "<a href=\"https://opencagedata.com/api\">OpenCage</a> APIs. "
+                       "Also the offline mode supports inter- and extrapolating existing "
+                       "cached records using polynomial Lagrange formula.");
+}
+
+void App::on_actionAbout_author_triggered()
+{
+    QMessageBox::about(this, "About me.",
+                       "My name is Dan. I'm a student of Lviv polytechnic, the faculty of "
+                       "Software Engineering. I'm kinda liking to code. Here's my github page: "
+                       "<a href=\"https://github.com/ghadd/\">ghadd</a>.");
+}
+
+void App::on_actionClose_city_triggered()
+{
+    if (!currentPlace) {
+        QMessageBox::warning(this, "Could not close a place.", "There is no place open at the moment.");
+        return;
     }
 }

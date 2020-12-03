@@ -31,6 +31,10 @@ private slots:
 
     void on_actionOpen_City_triggered();
 
+    void on_actionAbout_this_project_triggered();
+
+    void on_actionAbout_author_triggered();
+
 private:
     Place *getPlace();
     void loadPlace(bool open);

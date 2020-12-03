@@ -63,7 +63,7 @@ public:
         what_ = place.toQString();
     }
     const char *what() const noexcept override {
-        return "";
+        return what_.toLocal8Bit() + " is not a valid place.";
     }
 
 private:

@@ -35,19 +35,23 @@ void Place::validateSelf() {
     tao::json::value jsonResponse;
     try {
         jsonResponse = tao::json::from_string(cprResponse.text);
+        validateCountryAndCity(jsonResponse.at("results").at(0).at("components"));
+        validateCoords(jsonResponse.at("results").at(0).at("bounds"));
+
+        validated = true;
     }
     catch (const tao::json::pegtl::parse_error &pe) {
         InvalidPlaceException exc(*this);
         *this = INVALID_PLACE;
         throw exc;
     }
+    catch (const std::out_of_range &e) {
+        InvalidPlaceException exc(*this);
+        *this = INVALID_PLACE;
+        throw exc;
+    }
 
     // check for valid status
-
-    validateCountryAndCity(jsonResponse.at("results").at(0).at("components"));
-    validateCoords(jsonResponse.at("results").at(0).at("bounds"));
-
-    validated = true;
 }
 
 QString Place::toQString() const {
