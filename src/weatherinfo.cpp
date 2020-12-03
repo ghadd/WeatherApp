@@ -7,8 +7,8 @@ WeatherInfo::WeatherInfo()
 
 QString WeatherInfo::toQString() const
 {
-    return QString("🌡️: %1°C\n"
-                   "🌪️: %2hPa\n"
+    return QString("🌡️ %1°C\n"
+                   "🌪️ %2hPa\n"
                    "🌫️ %3%")
             .arg(temperature_ - 273.15)
             .arg(pressure_)

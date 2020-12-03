@@ -13,6 +13,7 @@
 #include "src/place.h"
 #include "src/config.h"
 #include "src/weather.h"
+#include "src/weatherinputdialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class App; }
@@ -42,6 +43,8 @@ private slots:
     void on_actionClose_city_triggered();
 
     void on_actionQuit_triggered();
+
+    void on_actionNew_Weather_Record_triggered();
 
 private:
     Place *getPlace();

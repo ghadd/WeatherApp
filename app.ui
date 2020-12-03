@@ -10,6 +10,18 @@
     <height>399</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::NoContextMenu</enum>
+  </property>
   <property name="windowTitle">
    <string>WeatherApp</string>
   </property>
@@ -82,16 +94,22 @@
            </property>
           </widget>
          </item>
-         <item alignment="Qt::AlignRight|Qt::AlignTop">
-          <widget class="QDateTimeEdit" name="currentObservingDateEdit">
+         <item alignment="Qt::AlignRight">
+          <widget class="QDateEdit" name="currentObservingDateEdit">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
            <property name="alignment">
-            <set>Qt::AlignCenter</set>
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+           <property name="displayFormat">
+            <string>d/M/yy</string>
            </property>
           </widget>
          </item>
@@ -617,7 +635,8 @@ Humidity: 80%</string>
   </action>
   <action name="actionLoad_weather_graph">
    <property name="icon">
-    <iconset theme="applications-graphics"/>
+    <iconset theme="applications-graphics">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Load weather graph</string>
@@ -625,7 +644,8 @@ Humidity: 80%</string>
   </action>
   <action name="actionAbout_this_project">
    <property name="icon">
-    <iconset theme="help-contents"/>
+    <iconset theme="help-contents">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>About this project</string>
@@ -633,7 +653,8 @@ Humidity: 80%</string>
   </action>
   <action name="actionAbout_author">
    <property name="icon">
-    <iconset theme="help-about"/>
+    <iconset theme="help-about">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>About author</string>

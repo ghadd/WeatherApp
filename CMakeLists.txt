@@ -30,6 +30,10 @@ add_executable(WeatherApp
   src/config.h
   src/logic.h
 
+  src/weatherinputdialog.h
+  src/weatherinputdialog.cpp
+  src/weatherinputdialog.ui
+
   assets.qrc
   )
 

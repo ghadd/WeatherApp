@@ -234,3 +234,19 @@ void App::on_actionQuit_triggered()
 {
     closeEvent(new QCloseEvent());
 }
+
+void App::on_actionNew_Weather_Record_triggered()
+{
+    bool ok;
+    InvalidPlaceException *exc = nullptr;
+    auto weather = WeatherInputDialog::getWeather(this, &ok, exc);
+
+    if (!ok) {
+        if (exc)
+            QMessageBox::warning(this, "City not found.", QString::fromLocal8Bit(exc->what()));
+        return;
+    } else {
+        weather.save();
+        QMessageBox::information(this, "Success.", "Weather record was added successfully.");
+    }
+}
