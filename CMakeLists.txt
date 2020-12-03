@@ -11,8 +11,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Charts REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Charts REQUIRED)
 
 add_executable(WeatherApp
   main.cpp
@@ -38,4 +38,5 @@ add_executable(WeatherApp
   )
 
 target_link_libraries(WeatherApp PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(WeatherApp PRIVATE Qt${QT_VERSION_MAJOR}::Charts)
 target_link_libraries(WeatherApp PRIVATE cpr)

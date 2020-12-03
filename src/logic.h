@@ -4,6 +4,7 @@
 #include <array>
 #include <vector>
 #include <utility>
+#include <algorithm>
 
 #include <QDir>
 #include <QDirIterator>
@@ -28,5 +29,28 @@ T interpolate(const std::vector<data_t<T> > &dataSet, T atX) {
 
     return result;
 }
+
+template <typename T>
+void pairsort(std::vector<QDate> &a, std::vector<data_t<T>> &b)
+{
+    assert(a.size() == b.size());
+    std::vector<std::pair<QDate, data_t<T> > > pairs(a.size());
+
+    for (size_t i = 0; i < a.size(); i++)
+    {
+        pairs[i].first = a[i];
+        pairs[i].second = b[i];
+    }
+
+    std::sort(pairs.begin(), pairs.end());
+
+    // Modifying original arrays
+    for (size_t i = 0; i < a.size(); i++)
+    {
+        a[i] = pairs[i].first;
+        b[i] = pairs[i].second;
+    }
+}
+
 
 #endif // LOGIC_H

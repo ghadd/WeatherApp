@@ -154,7 +154,7 @@ Weather Weather::guessAtDate(QDate *date, Place *place) {
 
     // get out this 3 in some enum or something
     std::array<std::vector<data_t<qreal>>, 3> dataSet =
-            getCollectedData<qreal, 3>(wd);
+            getCollectedData<qreal, 3>(wd, new std::vector<QDate>);
     std::array<qreal, 3> results =
             interpolateData<qreal, 3>(dataSet, totalDays(*date));
 

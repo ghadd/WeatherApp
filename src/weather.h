@@ -95,7 +95,7 @@ getset:
 int totalDays(const QDate &date);
 
 template<typename T, int N>
-std::array<std::vector<data_t<T>>, N> getCollectedData(QDir dir) {
+std::array<std::vector<data_t<T>>, N> getCollectedData(QDir dir, std::vector<QDate> *dates){
     std::array<std::vector<data_t<T> >, N> dataSet;
 
     dir.setFilter(QDir::Files);
@@ -107,6 +107,10 @@ std::array<std::vector<data_t<T>>, N> getCollectedData(QDir dir) {
     QDirIterator dirIt(dir);
     while (dirIt.hasNext()) {
         QFile file(dirIt.next());
+        QFileInfo fileinfo(file);
+
+        dates->push_back(QDate::fromString(fileinfo.baseName(), Qt::ISODate));
+
         if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
             // handle this
         }
@@ -124,6 +128,8 @@ std::array<std::vector<data_t<T>>, N> getCollectedData(QDir dir) {
                 std::make_pair(totalDays(*weather.date()), weather.winfo()->humidity());
 
         pos++;
+
+        file.close();
     }
 
     return dataSet;

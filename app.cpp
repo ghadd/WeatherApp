@@ -36,6 +36,8 @@ App::App(QWidget *parent)
     initLabelImageSize = QSize(100, 100);
     initSize = this->size();
     pixmap.load(":/images/weather_states/half_sunny_day.png"); // todo
+
+    chartWindow = new QMainWindow(this);
 }
 
 App::~App() {
@@ -249,4 +251,52 @@ void App::on_actionNew_Weather_Record_triggered()
         weather.save();
         QMessageBox::information(this, "Success.", "Weather record was added successfully.");
     }
+}
+
+void App::on_actionLoad_weather_graph_triggered()
+{
+    if (!currentPlace) {
+        QMessageBox::warning(this, "Could not load a chart.", "There is no place open at the moment.");
+        return;
+    }
+
+    using namespace QtCharts;
+
+    QChart *chart = new QChart();
+    QSplineSeries * series = new QSplineSeries;
+
+    QString dirPath = QString::fromStdString(
+            config::as_string(config::WEATHER_DIRECTORY_FORMAT))
+            .arg(currentPlace->country(), currentPlace->city());
+
+    QDir wd = QDir::home();
+    if (!wd.cd(dirPath)) {
+        // handle no such dir
+    }
+
+    std::vector<QDate> dates;
+    std::array<std::vector<data_t<qreal>>, 3> dataSet =
+            getCollectedData<qreal, 3>(wd, &dates);
+
+    pairsort(dates, dataSet[0]);
+
+    for (size_t i = 0; i < dates.size(); i++) {
+        series->append(dates[i].startOfDay().toMSecsSinceEpoch(), dataSet[0][i].second);
+    }
+
+    chart->addSeries(series);
+
+    chart->createDefaultAxes();
+    chart->setTitle("Weather in " + currentPlace->toQString());
+
+    QDateTimeAxis *axisX = new QDateTimeAxis;
+    axisX->setFormat("dd-MM-yyyy");
+    chart->addAxis(axisX, Qt::AlignBottom);
+
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+
+    chartWindow->setCentralWidget(chartView);
+    chartWindow->resize(400, 300);
+    chartWindow->show();
 }

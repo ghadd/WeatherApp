@@ -9,6 +9,11 @@
 #include <QResizeEvent>
 #include <QAbstractButton>
 #include <QCloseEvent>
+#include <QDateTime>
+#include <QtCharts/QChart>
+#include <QtCharts/QSplineSeries>
+#include <QtCharts/QDateTimeAxis>
+#include <QtCharts/QChartView>
 
 #include "src/place.h"
 #include "src/config.h"
@@ -46,6 +51,8 @@ private slots:
 
     void on_actionNew_Weather_Record_triggered();
 
+    void on_actionLoad_weather_graph_triggered();
+
 private:
     Place *getPlace();
     void loadPlace(bool open);
@@ -68,6 +75,9 @@ private:
     QPixmap pixmap;
     QSize initSize;
     QSize initLabelImageSize;
+
+private:
+    QMainWindow *chartWindow;
 };
 
 #endif // APP_H
