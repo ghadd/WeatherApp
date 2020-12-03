@@ -22,6 +22,8 @@ QScrollArea {
 
 QScrollArea > QWidget > QWidget {
     background: rgba(4, 4, 20, 70);
+    border: 1px solid rgba(0, 0, 0, 200);
+    font-size: 14px;
 }
 
 QScrollArea > QWidget > QScrollBar {

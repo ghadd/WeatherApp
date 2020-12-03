@@ -7,9 +7,9 @@ WeatherInfo::WeatherInfo()
 
 QString WeatherInfo::toQString() const
 {
-    return QString("Temperature: %1°C\n"
-                   "Pressure: %2hPa\n"
-                   "Humidity %3%")
+    return QString("🌡️: %1°C\n"
+                   "🌪️: %2hPa\n"
+                   "🌫️ %3%")
             .arg(temperature_ - 273.15)
             .arg(pressure_)
             .arg(humidity_);
