@@ -1,3 +1,29 @@
 #centralwidget {
-    border-image: url(:/images/background.jpg)
+    border-image: url(:/images/background.png)
+}
+
+
+QLabel {
+    font-family: 'Varela Round', sans-serif;
+}
+
+QLabel#cityNamingLabel {
+   font-size: 36px;
+   font-weight: 600;
+}
+
+QLabel#currentObservingDateLabel {
+    font-size: 16px;
+}
+
+QScrollArea {
+    background: rgba(4, 4, 20, 70);
+}
+
+QScrollArea > QWidget > QWidget {
+    background: rgba(4, 4, 20, 70);
+}
+
+QScrollArea > QWidget > QScrollBar {
+    background: palette(base);
 }

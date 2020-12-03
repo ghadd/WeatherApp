@@ -68,7 +68,7 @@ Place *App::getPlace()
     if (!ok)
         throw std::runtime_error("Invalid country");
 
-    QString city = QInputDialog::getText(this, "City", "Enter city in " + country + " :", QLineEdit::Normal , "", &ok);
+    QString city = QInputDialog::getText(this, "City", "Enter city in " + country + ":", QLineEdit::Normal , "", &ok);
     if (!ok)
         throw std::runtime_error("Invalid country");
 

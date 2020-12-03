@@ -1,9 +1,12 @@
 #include <QApplication>
+#include <QFontDatabase>
 #include "app.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    QFontDatabase::addApplicationFont(":/fonts/VarelaRound-Regular.ttf");
 
     QFile styleSheetFile(":/style/stylesheet.qss");
     if (!styleSheetFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -16,6 +19,7 @@ int main(int argc, char *argv[])
     styleSheetFile.close();
 
     App w;
+
     w.show();
     return a.exec();
 }

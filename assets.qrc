@@ -9,5 +9,7 @@
         <file>images/weather_states/thunderstom.png</file>
         <file>style/stylesheet.qss</file>
         <file>images/background.jpg</file>
+        <file>fonts/VarelaRound-Regular.ttf</file>
+        <file>images/background.png</file>
     </qresource>
 </RCC>
