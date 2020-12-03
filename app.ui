@@ -600,6 +600,9 @@ Humidity: 80%</string>
    <property name="text">
     <string>New City...</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
   <action name="actionOpen_City">
    <property name="icon">
@@ -609,10 +612,16 @@ Humidity: 80%</string>
    <property name="text">
     <string>Open City...</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="actionNew_Weather_Record">
    <property name="text">
     <string>New Weather Record...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+N</string>
    </property>
   </action>
   <action name="actionClose_city">
@@ -640,6 +649,9 @@ Humidity: 80%</string>
    </property>
    <property name="text">
     <string>Load weather graph</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
    </property>
   </action>
   <action name="actionAbout_this_project">
