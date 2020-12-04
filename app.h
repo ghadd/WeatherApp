@@ -53,6 +53,8 @@ private slots:
 
     void on_actionLoad_weather_graph_triggered();
 
+    void on_currentObservingDateEdit_dateTimeChanged(const QDateTime &dateTime);
+
 private:
     Place *getPlace();
     void loadPlace(bool open);

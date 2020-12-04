@@ -302,3 +302,9 @@ void App::on_actionLoad_weather_graph_triggered()
     chartWindow->resize(400, 300);
     chartWindow->show();
 }
+
+void App::on_currentObservingDateEdit_dateTimeChanged(const QDateTime &dateTime)
+{
+    updateWeatherInfo();
+    showWeatherWeek();
+}
