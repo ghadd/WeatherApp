@@ -281,7 +281,7 @@ void App::on_actionLoad_weather_graph_triggered()
     pairsort(dates, dataSet[0]);
 
     for (size_t i = 0; i < dates.size(); i++) {
-        series->append(dates[i].startOfDay().toMSecsSinceEpoch(), dataSet[0][i].second);
+        series->append(dates[i].startOfDay().toMSecsSinceEpoch(), dataSet[0][i].second - 273.15);
     }
 
     chart->addSeries(series);
@@ -292,6 +292,8 @@ void App::on_actionLoad_weather_graph_triggered()
     QDateTimeAxis *axisX = new QDateTimeAxis;
     axisX->setFormat("dd-MM-yyyy");
     chart->addAxis(axisX, Qt::AlignBottom);
+    chart->axes().at(0)->setVisible(false);
+    series->attachAxis(axisX);
 
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
