@@ -96,8 +96,7 @@ void App::loadPlace(bool open)
 
 
     QString folderName = QDir::home().filePath(QString::fromStdString(config::as_string(config::WEATHER_DIRECTORY_FORMAT))
-            .arg(place->country())
-            .arg(place->city()));
+            .arg(place->country(), place->city()));
 
     if (open) {
         if (!QDir(folderName).exists()) {
@@ -244,8 +243,10 @@ void App::on_actionNew_Weather_Record_triggered()
     auto weather = WeatherInputDialog::getWeather(this, &ok, exc);
 
     if (!ok) {
-        if (exc)
+        if (exc) {
             QMessageBox::warning(this, "City not found.", QString::fromLocal8Bit(exc->what()));
+            delete exc;
+        }
         return;
     } else {
         weather.save();

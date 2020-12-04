@@ -60,8 +60,7 @@ Weather Weather::load(QDate *date, Place *place)
 {
     QDir possibleDir = QDir::home();
     QString possibleFolder = QString::fromStdString(config::as_string(config::WEATHER_DIRECTORY_FORMAT))
-            .arg(place->country())
-            .arg(place->city());
+            .arg(place->country(), place->city());
 
     possibleDir.cd(possibleFolder);
     QString possibleFileName = QString::fromStdString(config::as_string(config::WEATHER_FILE_FORMAT))
