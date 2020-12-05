@@ -120,6 +120,11 @@ void App::loadPlace(bool open)
 
     currentPlace = place;
     ui->cityInfoWidget->setVisible(true);
+
+    auto font = ui->WeatherAppTitle->font();
+    font.setPointSize(16);
+    ui->WeatherAppTitle->setFont(font);
+
     ui->cityNamingLabel->setText(place->toQString());
     ui->cityCoordinatesLabel->setText(place->coordsQString());
     ui->currentObservingDateEdit->setDate(QDate::currentDate());
@@ -228,6 +233,11 @@ void App::on_actionClose_city_triggered()
 
     ui->cityInfoWidget->setVisible(false);
     ui->weatherInfoScrollArea->setVisible(false);
+
+    auto font = ui->WeatherAppTitle->font();
+    font.setPointSize(72);
+    ui->WeatherAppTitle->setFont(font);
+
     currentPlace = nullptr;
 }
 

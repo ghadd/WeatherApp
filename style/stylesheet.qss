@@ -12,6 +12,11 @@ QLabel#cityNamingLabel {
    font-weight: 600;
 }
 
+QLabel#WeatherAppTitle {
+    font-size: 72px;
+    font-weight: 900;
+}
+
 QLabel#currentObservingDateLabel {
     font-size: 16px;
 }

@@ -38,6 +38,16 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <widget class="QLabel" name="WeatherAppTitle">
+      <property name="text">
+       <string>Weather App</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QWidget" name="cityInfoWidget" native="true">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
@@ -148,7 +158,7 @@
          <x>0</x>
          <y>0</y>
          <width>863</width>
-         <height>225</height>
+         <height>206</height>
         </rect>
        </property>
        <property name="autoFillBackground">
@@ -163,6 +173,9 @@
              <string>Date</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <layout class="QFormLayout" name="formLayout"/>
           </item>
           <item>
            <widget class="QLabel" name="dayImageLabel_1">
