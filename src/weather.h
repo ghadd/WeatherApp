@@ -5,7 +5,7 @@
 #include <QTextStream>
 #include <QDateTime>
 #include <QDate>
-#include <QtGlobal> // qt types compatibility
+#include <QtGlobal>
 #include <QDir>
 #include <QFile>
 
@@ -16,6 +16,7 @@
 #include "weatherinfo.h"
 #include "config.h"
 #include "logic.h"
+#include "weatherexception.h"
 
 
 #define constructors public

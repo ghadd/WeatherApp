@@ -68,7 +68,7 @@ Weather Weather::load(QDate *date, Place *place)
 
     QFile possibleFile(possibleDir.filePath(possibleFileName));
     if (!possibleFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        throw std::runtime_error("Could not load weather from " + possibleFileName.toLocal8Bit());
+        throw CorruptedWeatherFile(possibleFileName);
     }
 
     QTextStream ts(&possibleFile);
@@ -168,7 +168,15 @@ Weather Weather::currentInPlace(Place *place, bool api) {
         Weather weather = Weather::load(new QDate(QDate::currentDate()), place);
         return weather;
     }
-    catch (const std::runtime_error &e) {}
+    catch (const CorruptedWeatherFile &e) {
+        // if the file is corrupted or does not exist
+    }
+    catch (const WeatherParseError &e) {
+        // if the file was parsed badly
+    }
+    catch (const tao::json::pegtl::parse_error &e) {
+        // if an engine could not parse a json
+    }
 
     if (api)
         return currentInPlaceAPI(place);
@@ -182,7 +190,7 @@ Weather Weather::inPlace(QDate *date, Place *place, bool api) {
         Weather weather = Weather::load(date, place);
         return weather;
     }
-    catch (const std::runtime_error &e) {}
+    catch (const CorruptedWeatherFile &e) {}
 
     if (api)
         return inPlaceAtDateAPI(date, place);
@@ -255,10 +263,9 @@ QTextStream &operator>>(QTextStream &in, Weather &weather) {
         }
     }
 
-    if (!reading)
-        throw std::runtime_error("No valid json found.");
-    else if (curlyBracesCount)
-        throw std::runtime_error("Seems like json is malformed.");
+    if (!reading || curlyBracesCount) {
+        throw WeatherParseError("null");
+    }
     else
         try {
             weather =
