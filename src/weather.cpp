@@ -36,6 +36,10 @@ tao::json::value Weather::toJson() const {
     return jsonWeather;
 }
 
+QString Weather::toQString() const {
+    return QString::fromStdString(tao::json::to_string(toJson(), 2));
+}
+
 Weather Weather::fromJson(const tao::json::value& jsonValue) {
     auto jsonDate = jsonValue.as<std::string>("date");
     auto *date = new QDate(

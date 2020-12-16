@@ -319,3 +319,18 @@ void App::on_currentObservingDateEdit_dateTimeChanged(const QDateTime &dateTime)
     updateWeatherInfo();
     showWeatherWeek();
 }
+
+void App::on_actionWarmest_and_Coldest_days_triggered()
+{
+    Weather warmest = currentShownWeather[0], coldest = currentShownWeather[0];
+    for (auto &weather : currentShownWeather) {
+        if (weather.winfo()->temperature() > warmest.winfo()->temperature()) {
+            warmest = weather;
+        }
+        if (weather.winfo()->temperature() < coldest.winfo()->temperature()) {
+            coldest = weather;
+        }
+    }
+
+    QMessageBox::information(this, "Temperatures.", "Warmest:\n" + warmest.toQString() + "\n\nColdest:\n" + coldest.toQString());
+}

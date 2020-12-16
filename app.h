@@ -55,6 +55,8 @@ private slots:
 
     void on_currentObservingDateEdit_dateTimeChanged(const QDateTime &dateTime);
 
+    void on_actionWarmest_and_Coldest_days_triggered();
+
 private:
     Place *getPlace();
     void loadPlace(bool open);

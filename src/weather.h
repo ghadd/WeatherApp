@@ -42,6 +42,7 @@ constructors:
 conversions:
 
     [[nodiscard]] tao::json::value toJson() const; // [x]
+    [[nodiscard]] QString toQString() const;
     static Weather fromJson(const tao::json::value& jsonValue); // [x]
 
 operators:
