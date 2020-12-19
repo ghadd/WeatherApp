@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>WeatherApp</Name>
+    <Version>1.0.0</Version>
+    <Title>WeatherApp Installer</Title>
+    <Publisher>Dan Timachov</Publisher>
+    <StartMenuDir>Weather App</StartMenuDir>
+    <TargetDir>@HomeDir@/InstallationDirectory</TargetDir>
+</Installer>
